@@ -1,0 +1,9 @@
+/*ELIMINAR TABLAS*/
+DROP TABLE items;
+DROP TABLE facturas;
+
+/*ELIMANR UNA COLUMNA EN UNA TABLA*/
+ALTER TABLE clientes DROP COLUMN ciudad;
+
+/*ELIMINAR TRIGGERS*/
+DROP TRIGGER tg_facturacion_insert;
