@@ -3,6 +3,8 @@ ALTER TABLE vender RENAME TO vendedores;
 
 /*ALTERAR NOMBRE A UNA COLUMNA EN UNA TABLA*/
 ALTER TABLE clientes RENAME COLUMN primira_compra TO primera_compra;
+-- O
+ALTER TABLE clientes CHANGE primera_compra compra_unica VARCHAR(30) NOT NULL;
 
 /*ALTERAR TABLA PARA ADICIÓN DE NUEVA COLUMNA*/
 /*FIRST (Se coloca primero) - AFTER (Se coloca segun en campo donde se requiere que valla)*/

@@ -59,3 +59,27 @@ CREATE TABLE items(
     FOREIGN KEY (numero) REFERENCES facturas(numero),
     FOREIGN KEY (codigo) REFERENCES productos(codigo)
 );
+
+/* CREACIÓN DE TABLA CON REFERENCIAS A CONSTRAINT (Es útil para refrenciar a las llaves primarias,
+foreaneas y unique) */
+CREATE TABLE usuarios(
+	id INT AUTO_INCREMENT,
+    login VARCHAR(30) NOT NULL,
+    password TEXT NOT NULL,
+    nickname VARCHAR(32) NOT NULL UNIQUE,
+    email VARCHAR(50) NOT NULL UNIQUE,
+    CONSTRAINT usuario_id_pk PRIMARY KEY(id)
+);
+
+CREATE TABLE posts(
+	id INT AUTO_INCREMENT,
+    titulo VARCHAR(150) NOT NULL,
+    fecha_publicacion TIMESTAMP NOT NULL,
+    contenido TEXT NOT NULL,
+    estatus CHAR(8) NOT NULL DEFAULT 'activo',
+    usuario_id INT NOT NULL,
+    categoria_id INT NOT NULL,
+    CONSTRAINT post_id_pk PRIMARY KEY (id),
+    CONSTRAINT usuario_id_fk FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON UPDATE CASCADE ON DELETE NO ACTION,
+    CONSTRAINT categoria_id_fk FOREIGN KEY (categoria_id) REFERENCES categorias(id) ON UPDATE CASCADE ON DELETE NO ACTION
+);
